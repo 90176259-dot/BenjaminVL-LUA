@@ -1,0 +1,599 @@
+local Players = game:GetService("Players")
+RunService local = juego:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+jugador local = Jugadores.JugadorLocal
+local playerGui = player:WaitForChild("PlayerGui")
+
+local old = playerGui:FindFirstChild("RickyVL")
+Si es antiguo, entonces antiguo: Destruir() fin
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "RickyVL"
+gui.ResetOnSpawn = false
+gui.Parent = playerGui
+
+local ToggleFrame = Instance.new("Frame")
+ToggleFrame.Size = UDim2.new(0, 100, 0, 50)
+ToggleFrame.Position = UDim2.new(0, 5, 0, 80)
+ToggleFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+ToggleFrame.BorderSizePixel = 1
+ToggleFrame.Active = true
+ToggleFrame.Parent = gui
+
+local ToggleUIBtn = Instance.new("TextButton")
+ToggleUIBtn.Size = UDim2.new(1, 0, 0.5, 0)
+ToggleUIBtn.BackgroundTransparency = 1
+ToggleUIBtn.Text = "Alternar interfaz de usuario"
+ToggleUIBtn.TextColor3 = Color3.fromRGB(220, 220, 220)
+ToggleUIBtn.TextSize = 11
+ToggleUIBtn.Font = Enum.Font.Code
+ToggleUIBtn.Parent = ToggleFrame
+
+local UnlockUIBtn = Instance.new("TextButton")
+UnlockUIBtn.Size = UDim2.new(1, 0, 0.5, 0)
+UnlockUIBtn.Position = UDim2.new(0, 0, 0.5, 0)
+DesbloquearUIBtn.TransparenciaDeFondo = 1
+UnlockUIBtn.Text = "Desbloquear interfaz de usuario"
+UnlockUIBtn.TextColor3 = Color3.fromRGB(220, 220, 220)
+DesbloquearUIBtn.TextSize = 11
+UnlockUIBtn.Font = Enum.Font.Code
+DesbloquearUIBtn.Parent = ToggleFrame
+
+local Main = Instance.new("Frame")
+Main.Size = UDim2.new(0, 500, 0, 300)
+Main.Position = UDim2.new(0.5, -250, 0.5, -150)
+Main.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Main.BorderSizePixel = 1
+Principal.Activo = verdadero
+Principal.Parent = gui
+
+local TopLine = Instancia.new("Marco")
+TopLine.Size = UDim2.new(1, 0, 0, 3)
+TopLine.BackgroundColor3 = Color3.fromRGB(0, 200, 220)
+TopLine.BorderSizePixel = 0
+TopLine.Parent = Principal
+
+local TopGrad = Instancia.new("UIGradient")
+TopGrad.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 180, 220)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 220, 255)),
+})
+TopGrad.Parent = TopLine
+
+local TitleLabel = Instance.new("TextLabel")
+TitleLabel.Size = UDim2.new(1, -90, 0, 28)
+TitleLabel.Position = UDim2.new(0, 8, 0, 3)
+TitleLabel.BackgroundTransparency = 1
+TitleLabel.Text = "RickyVL Lua - discord/chris088033"
+TítuloLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TitleLabel.TextSize = 11
+TitleLabel.Font = Enum.Font.Code
+TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
+Etiqueta del título.Padre = Principal
+
+local RivalsLabel = Instance.new("TextLabel")
+RivalsLabel.Size = UDim2.new(0, 80, 0, 28)
+RivalsLabel.Position = UDim2.new(1, -88, 0, 3)
+RivalsLabel.BackgroundTransparency = 1
+RivalsLabel.Text = "Rivals"
+RivalesLabel.TextColor3 = Color3.fromRGB(180, 100, 255)
+RivalsLabel.TextSize = 11
+RivalsLabel.Font = Enum.Font.Code
+RivalsLabel.TextXAlignment = Enum.TextXAlignment.Right
+RivalsLabel.Parent = Principal
+
+local TabBar = Instancia.new("Marco")
+TabBar.Size = UDim2.new(1, 0, 0, 28)
+TabBar.Posición = UDim2.new(0, 0, 0, 31)
+TabBar.BackgroundColor3 = Color3.fromRGB(13, 13, 13)
+TabBar.BorderSizePixel = 0
+TabBar.Parent = Principal
+
+local TabLine = Instancia.new("Marco")
+TabLine.Size = UDim2.new(1/7, 0, 0, 2)
+TabLine.Position = UDim2.new(0, 0, 1, -2)
+TabLine.BackgroundColor3 = Color3.fromRGB(150, 80, 255)
+TabLine.BorderSizePixel = 0
+TabLine.Parent = TabBar
+
+local TabRowLayout = Instance.new("UIListLayout")
+TabRowLayout.FillDirection = Enum.FillDirection.Horizontal
+TabRowLayout.OrdenDeOrdenación = Enum.OrdenDeOrdenación.OrdenDeDiseño
+TabRowLayout.Parent = TabBar
+
+local Div = Instancia.new("Marco")
+Div.Size = UDim2.new(1, 0, 0, 1)
+Div.Position = UDim2.new(0, 0, 0, 59)
+Div.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Div.BorderSizePixel = 0
+Div.Parent = Principal
+
+Contenido local = Instancia.new("Marco")
+Content.Size = UDim2.new(1, 0, 1, -82)
+Content.Position = UDim2.new(0, 0, 0, 60)
+Contenido.TransparenciaDeFondo = 1
+Contenido.ClipsDescendientes = verdadero
+Contenido.Padre = Principal
+
+local BotBar = Instancia.new("Marco")
+BotBar.Size = UDim2.new(1, 0, 0, 20)
+BotBar.Position = UDim2.new(0, 0, 1, -20)
+BotBar.BackgroundColor3 = Color3.fromRGB(12, 12, 12)
+BotBar.BorderSizePixel = 0
+BotBar.Parent = Principal
+
+local StatusLabel = Instance.new("TextLabel")
+StatusLabel.Size = UDim2.new(1, -8, 1, 0)
+StatusLabel.Position = UDim2.new(0, 8, 0, 0)
+StatusLabel.BackgroundTransparency = 1
+StatusLabel.Text = "Configuración cargada automáticamente RickyVL"
+StatusLabel.TextColor3 = Color3.fromRGB(150, 150, 150)
+StatusLabel.TextSize = 10
+StatusLabel.Font = Enum.Font.Code
+StatusLabel.TextXAlignment = Enum.TextXAlignment.Left
+StatusLabel.Parent = BotBar
+
+local tabNames = {"main", "world", "esp", "visuals", "character", "emotes", "settings"}
+local tabBtns = {}
+tabFrames locales = {}
+
+función local newPage()
+    local f = Instancia.new("ScrollingFrame")
+    f.Size = UDim2.new(1, 0, 1, 0)
+    f.TransparenciaDeFondo = 1
+    f.BorderSizePixel = 0
+    f.GrosorDeLaBarraDeDesplazamiento = 3
+    f.ScrollBarImageColor3 = Color3.fromRGB(100, 50, 200)
+    f.CanvasSize = UDim2.new(0, 0, 0, 600)
+    f.Visible = falso
+    f.Padre = Contenido
+    devolver f
+fin
+
+para i, nombre en ipairs(tabNames) hacer
+    local btn = Instance.new("TextButton")
+    btn.Size = UDim2.new(1/#tabNames, 0, 1, 0)
+    btn.TransparenciaDeFondo = 1
+    btn.Texto = nombre
+    btn.TextColor3 = Color3.fromRGB(110, 110, 110)
+    btn.TextSize = 10
+    btn.Font = Enum.Font.Code
+    btn.BorderSizePixel = 0
+    btn.LayoutOrder = i
+    btn.Parent = TabBar
+    tabBtns[nombre] = btn
+    tabFrames[nombre] = nuevaPágina()
+fin
+
+función local switchTab(nombre)
+    para i, n en ipairs(tabNames) hacer
+        tabFrames[n].Visible = n == nombre
+        tabBtns[n].TextColor3 = n == nombre
+            y Color3.fromRGB(230, 230, 230)
+            o Color3.fromRGB(110, 110, 110)
+        si n == nombre entonces
+            TabLine:TweenPosition(
+                UDim2.new((i-1)/#tabNames, 0, 1, -2),
+                Enumeración.DirecciónDeAscenso, Salida,
+                Enum.EasingStyle.Quad,
+                0,15, verdadero
+            )
+        fin
+    fin
+fin
+
+para _, nombre en ipairs(tabNames) hacer
+    tabBtns[nombre].MouseButton1Click:Connect(function()
+        SwitchTab(nombre)
+    fin)
+fin
+
+función local addSection(página, texto, y, derecha)
+    x local = derecha y 0,52 o 0,02
+    local f = Instancia.new("Etiqueta de texto")
+    f.Size = UDim2.new(0.44, 0, 0, 18)
+    f.Posición = UDim2.new(x, 0, 0, y)
+    f.TransparenciaDeFondo = 1
+    f.Texto = texto
+    f.TextColor3 = Color3.fromRGB(110, 110, 110)
+    f.TextSize = 10
+    f.Fuente = Enum.Fuente.Código
+    f.TextXAlignment = Enum.TextXAlignment.Left
+    f.Padre = página
+fin
+
+función local addToggle(página, texto, y, derecha, cb)
+    x local = derecha y 0,52 o 0,02
+    fila local = Instancia.new("Marco")
+    fila.Size = UDim2.new(0.44, 0, 0, 26)
+    fila.Posición = UDim2.new(x, 0, 0, y)
+    fila.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+    fila.BorderSizePixel = 0
+    fila.Padre = página
+
+    local box = Instance.new("Frame")
+    box.Size = UDim2.new(0, 12, 0, 12)
+    box.Position = UDim2.new(0, 6, 0.5, -6)
+    box.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    caja.BorderSizePixel = 0
+    caja.Padre = fila
+    Instance.new("UICorner", box).CornerRadius = UDim.new(0, 3)
+
+    local lbl = Instancia.new("Etiqueta de texto")
+    lbl.Size = UDim2.new(1, -50, 1, 0)
+    lbl.Position = UDim2.new(0, 24, 0, 0)
+    lbl.TransparenciaDeFondo = 1
+    lbl.Texto = texto
+    lbl.TextColor3 = Color3.fromRGB(200, 200, 200)
+    lbl.TextSize = 10
+    lbl.Font = Enum.Font.Code
+    lbl.TextXAlignment = Enum.TextXAlignment.Left
+    lbl.Parent = fila
+
+    local dotlbl = Instancia.new("Etiqueta de texto")
+    dotlbl.Size = UDim2.new(0, 24, 1, 0)
+    dotlbl.Position = UDim2.new(1, -26, 0, 0)
+    dotlbl.TransparenciaDeFondo = 1
+    dotlbl.Text = "..."
+    dotlbl.TextColor3 = Color3.fromRGB(90, 90, 90)
+    dotlbl.TextSize = 11
+    dotlbl.Font = Enum.Font.Code
+    dotlbl.Parent = fila
+
+    local habilitado = falso
+    local clickbtn = Instance.new("TextButton")
+    clickbtn.Size = UDim2.new(1, 0, 1, 0)
+    clickbtn.BackgroundTransparency = 1
+    clickbtn.Text = ""
+    clickbtn.Parent = fila
+
+    clickbtn.MouseButton1Click:Connect(function()
+        habilitado = no habilitado
+        caja.BackgroundColor3 = habilitado
+            y Color3.fromRGB(150, 80, 255)
+            o Color3.fromRGB(50, 50, 50)
+        Si cb entonces cb(habilitado) fin
+    fin)
+fin
+
+función local addSlider(página, texto, y, mn, mx, predeterminado, derecha, cb)
+    x local = derecha y 0,52 o 0,02
+    marco local = Instancia.new("Marco")
+    frame.Size = UDim2.new(0.44, 0, 0, 22)
+    frame.Position = UDim2.new(x, 0, 0, y)
+    frame.BackgroundColor3 = Color3.fromRGB(110, 60, 200)
+    frame.BorderSizePixel = 0
+    marco.Padre = página
+    Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 3)
+
+    relleno local = Instancia.new("Marco")
+    fill.Size = UDim2.new((default - mn) / (mx - mn), 0, 1, 0)
+    fill.BackgroundColor3 = Color3.fromRGB(150, 90, 240)
+    relleno.BorderSizePixel = 0
+    rellenar.Padre = marco
+    Instance.new("UICorner", fill).CornerRadius = UDim.new(0, 3)
+
+    local lbl = Instancia.new("Etiqueta de texto")
+    lbl.Size = UDim2.new(1, 0, 1, 0)
+    lbl.TransparenciaDeFondo = 1
+    lbl.Text = texto .. ": " .. tostring(predeterminado)
+    lbl.TextColor3 = Color3.fromRGB(255, 255, 255)
+    lbl.TextSize = 10
+    lbl.Font = Enum.Font.Code
+    lbl.Parent = frame
+
+    arrastre local = falso
+    frame.InputBegan:Connect(function(inp)
+        si inp.UserInputType == Enum.UserInputType.MouseButton1 o
+           inp.UserInputType == Enum.UserInputType.Touch entonces
+            arrastrando = verdadero
+        fin
+    fin)
+    frame.InputEnded:Connect(function(inp)
+        si inp.UserInputType == Enum.UserInputType.MouseButton1 o
+           inp.UserInputType == Enum.UserInputType.Touch entonces
+            arrastrando = falso
+        fin
+    fin)
+    UserInputService.InputChanged:Connect(function(inp)
+        si se arrastra y (inp.UserInputType == Enum.UserInputType.MouseMovement o
+           inp.UserInputType == Enum.UserInputType.Touch) entonces
+            local rel = math.clamp((inp.Position.X - frame.AbsolutePosition.X) / frame.AbsoluteSize.X, 0, 1)
+            val local = math.floor(mn + (mx - mn) * rel)
+            fill.Size = UDim2.new(rel, 0, 1, 0)
+            lbl.Text = texto .. ": " .. tostring(val)
+            Si cb entonces cb(val) fin
+        fin
+    fin)
+fin
+
+función local addEmoteBtn(página, texto, y, derecha, nombreEmote)
+    x local = derecha y 0,52 o 0,02
+    local btn = Instance.new("TextButton")
+    btn.Size = UDim2.new(0.44, 0, 0, 26)
+    btn.Position = UDim2.new(x, 0, 0, y)
+    btn.BackgroundColor3 = Color3.fromRGB(60, 20, 120)
+    btn.Texto = texto
+    btn.TextColor3 = Color3.fromRGB(220, 220, 220)
+    btn.TextSize = 10
+    btn.Font = Enum.Font.Code
+    btn.BorderSizePixel = 0
+    btn.Parent = página
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 4)
+
+    btn.MouseButton1Click:Connect(function()
+        personaje local = jugador.Personaje
+        si carácter entonces
+            local hum = char:FindFirstChildOfClass("Humanoid")
+            si entonces
+                hum:ReproducirEmoticono(nombreEmoticono)
+            fin
+        fin
+        StatusLabel.Text = "emote: " .. emoteName
+    fin)
+fin
+
+local voidActive = false
+local voidSpamActive = false
+local orbitActive = false
+local fallLoop = nil
+local voidSpamLoop = nil
+local orbitLoop = nil
+local VOID_Y = -1e23
+ORBIT_Y local = -9.99e32
+local rainbowHue = 0
+ángulo de órbita local = 0
+Órbita localRadio = 20
+Velocidad de órbita local = 3
+
+RunService.Heartbeat:Connect(function()
+    si voidActive o voidSpamActive u orbitActive entonces
+        tonoArcoíris = (tonoArcoíris + 0,005) % 1
+        local c = Color3.fromHSV(rainbowHue, 1, 1)
+        TitleLabel.TextColor3 = c
+        TabLine.BackgroundColor3 = c
+        TopGrad.Color = ColorSequence.new({
+            ColorSequenceKeypoint.new(0, Color3.fromHSV(rainbowHue % 1, 1, 1)),
+            ColorSequenceKeypoint.new(0.5, Color3.fromHSV((rainbowHue + 0.5) % 1, 1, 1)),
+            ColorSequenceKeypoint.new(1, Color3.fromHSV((rainbowHue + 0.75) % 1, 1, 1)),
+        })
+    demás
+        TítuloLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TabLine.BackgroundColor3 = Color3.fromRGB(150, 80, 255)
+        TopGrad.Color = ColorSequence.new({
+            ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 180, 220)),
+            ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 220, 255)),
+        })
+    fin
+fin)
+
+función local startVoid(char)
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    Si no es hrp, entonces regresar fin
+    hrp.CFrame = CFrame.new(hrp.Position.X, VOID_Y, hrp.Position.Z)
+    Si fallLoop está presente, entonces fallLoop:Disconnect() fallLoop = nil fin
+    fallLoop = RunService.Heartbeat:Conectar(función()
+        si hrp y hrp.Parent entonces
+            Si hrp.Position.Y > VOID_Y + 5000 entonces
+                hrp.CFrame = CFrame.new(hrp.Position.X, VOID_Y, hrp.Position.Z)
+            fin
+            hrp.AssemblyLinearVelocity = Vector3.new(0, -500, 0)
+            StatusLabel.Text = "void activo | Y: " .. string.format("%.0f", hrp.Position.Y)
+        fin
+    fin)
+fin
+
+función local startVoidSpam(char)
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    Si no es hrp, entonces regresar fin
+    Si voidSpamLoop está presente, entonces voidSpamLoop:Disconnect() voidSpamLoop = nil
+    voidSpamLoop = RunService.Heartbeat:Connect(función()
+        si hrp y hrp.Parent entonces
+            hrp.CFrame = CFrame.new(hrp.Position.X, VOID_Y, hrp.Position.Z)
+            hrp.AssemblyLinearVelocity = Vector3.new(0, -9999, 0)
+            StatusLabel.Text = "void spam | Y: " .. string.format("%.0f", hrp.Position.Y)
+        fin
+    fin)
+fin
+
+función local startOrbit(char)
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    Si no es hrp, entonces regresar fin
+    Si orbitLoop está presente, entonces orbitLoop:Disconnect() orbitLoop = nil fin
+    orbitLoop = RunService.Heartbeat:Connect(function()
+        si hrp y hrp.Parent entonces
+            orbitAngle = orbitAngle + orbitSpeed ​​* 0,05
+            hrp.CFrame = CFrame.new(
+                math.cos(ángulo de órbita) * radio de órbita,
+                ÓRBITA_Y,
+                math.sin(ángulo de órbita) * radio de órbita
+            )
+            hrp.AssemblyLinearVelocity = Vector3.new(0, -9999, 0)
+            StatusLabel.Text = "orbit spam | Y: " .. string.format("%.0f", hrp.Position.Y)
+        fin
+    fin)
+fin
+
+función local onRespawn(fn, getFlag)
+    jugador.PersonajeAñadido:Conectar(función(nuevoPersonaje)
+        si getFlag() entonces
+            newChar:WaitForChild("HumanoidRootPart")
+            tarea.espera(0.1)
+            fn(newChar)
+        fin
+    fin)
+fin
+
+local mf = tabFrames["main"]
+addSection(mf, "apuntado silencioso", 6, false)
+addToggle(mf, "habilitado", 24, falso)
+addToggle(mf, "manipulación", 54, false)
+addToggle(mf, "parte más cercana", 84, false)
+addToggle(mf, "visualizar", 114, false)
+addToggle(mf, "mostrar campo de visión", 144, false)
+addSlider(mf, "radio", 174, 100, 2000, 1000, falso)
+addSlider(mf, "probabilidad de acierto", 200, 0, 100, 100, false)
+addSection(mf, "aimbot", 6, true)
+addToggle(mf, "habilitado", 24, verdadero)
+addSection(mf, "triggerbot", 90, true)
+addToggle(mf, "habilitado", 108, verdadero)
+addSlider(mf, "tiempo de reacción", 138, 0, 500, 0, verdadero)
+addSlider(mf, "retardo de disparo", 164, 0, 500, 0, verdadero)
+addSlider(mf, "distancia máxima", 190, 0, 500, 100, verdadero)
+
+local wf = tabFrames["world"]
+addSection(wf, "void", 6, false)
+addToggle(wf, "void enabled", 24, false, function(val)
+    voidActive = val
+    si val entonces
+        local char = player.Character o player.CharacterAdded:Wait()
+        startVoid(char)
+        onRespawn(startVoid, function() return voidActive end)
+    demás
+        Si fallLoop está presente, entonces fallLoop:Disconnect() fallLoop = nil fin
+        StatusLabel.Text = "Configuración cargada automáticamente RickyVL"
+    fin
+fin)
+addToggle(wf, "void spam", 54, false, function(val)
+    voidSpamActive = val
+    si val entonces
+        local char = player.Character o player.CharacterAdded:Wait()
+        startVoidSpam(carácter)
+        onRespawn(startVoidSpam, function() return voidSpamActive end)
+    demás
+        Si voidSpamLoop está presente, entonces voidSpamLoop:Disconnect() voidSpamLoop = nil
+        StatusLabel.Text = "Configuración cargada automáticamente RickyVL"
+    fin
+fin)
+addSection(wf, "orbit spam", 6, true)
+addToggle(wf, "órbita habilitada", 24, true, function(val)
+    órbitaActiva = val
+    si val entonces
+        local char = player.Character o player.CharacterAdded:Wait()
+        startOrbit(char)
+        onRespawn(startOrbit, function() return orbitActive end)
+    demás
+        Si orbitLoop está presente, entonces orbitLoop:Disconnect() orbitLoop = nil fin
+        StatusLabel.Text = "Configuración cargada automáticamente RickyVL"
+    fin
+fin)
+addSlider(wf, "orbit radius", 54, 5, 100, 20, true, function(val) orbitRadius = val end)
+addSlider(wf, "velocidad de órbita", 80, 1, 20, 3, true, function(val) orbitSpeed ​​= val end)
+
+local ef = tabFrames["esp"]
+addSection(ef, "player esp", 6, false)
+addToggle(ef, "box esp", 24, false)
+addToggle(ef, "name esp", 54, false)
+addToggle(ef, "barra de salud", 84, false)
+addToggle(ef, "trazadores", 114, false)
+
+local vf = tabFrames["visuales"]
+addSection(vf, "visuals", 6, false)
+addToggle(vf, "fullbright", 24, false, function(val)
+    juego:GetService("Lighting").Brightness = val y 10 o 1
+fin)
+addToggle(vf, "sin niebla", 54, false, function(val)
+    juego:GetService("Lighting").FogEnd = val y 999999 o 1000
+fin)
+
+local cf = tabFrames["character"]
+addSection(cf, "movimiento", 6, false)
+addToggle(cf, "truco de velocidad", 24, false, function(val)
+    personaje local = jugador.Personaje
+    si carácter entonces
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        Si hum, entonces hum.WalkSpeed ​​= val y 100 o 16 fin
+    fin
+fin)
+addToggle(cf, "salto infinito", 54, false, function(val)
+    UserInputService.JumpRequest:Connect(function()
+        si val y player.Character entonces
+            local hum = jugador.Personaje:FindFirstChildOfClass("Humanoide")
+            Si hum, entonces hum:ChangeState(Enum.HumanoidStateType.Jumping) fin
+        fin
+    fin)
+fin)
+addSlider(cf, "velocidad de caminar", 86, 16, 500, 50, false, function(val)
+    personaje local = jugador.Personaje
+    si carácter entonces
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        Si hum, entonces hum.WalkSpeed ​​= val fin
+    fin
+fin)
+addSlider(cf, "salto de potencia", 112, 50, 500, 50, false, function(val)
+    personaje local = jugador.Personaje
+    si carácter entonces
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        Si hay zumbido, entonces hum.JumpPower = val fin
+    fin
+fin)
+
+local emotef = tabFrames["emotes"]
+addSection(emotef, "emotes", 6, false)
+addEmoteBtn(emotef, "wave", 24, false, "wave")
+addEmoteBtn(emotef, "baile", 54, false, "baile")
+addEmoteBtn(emotef, "laugh", 84, false, "laugh")
+addEmoteBtn(emotef, "point", 114, false, "point")
+addEmoteBtn(emotef, "cheer", 144, false, "cheer")
+addEmoteBtn(emotef, "salute", 174, false, "salute")
+addEmoteBtn(emotef, "sentarse", 6, true, "sentarse")
+addEmoteBtn(emotef, "dormir", 36, true, "dormir")
+addEmoteBtn(emotef, "tpose", 66, true, "tpose")
+addEmoteBtn(emotef, "shrug", 96, true, "shrug")
+
+local sf = tabFrames["settings"]
+addSection(sf, "configuración de la interfaz de usuario", 6, false)
+addToggle(sf, "arcoíris cuando está activo", 24, false)
+
+función local makeDraggable(frame, handle)
+    arrastre local = falso
+    Entrada de arrastre local, posición del ratón, posición del marco
+    manejador.InputBegan:Connect(function(input)
+        si input.UserInputType == Enum.UserInputType.MouseButton1 o
+           Si input.UserInputType es igual a Enum.UserInputType.Touch, entonces
+            arrastrando = verdadero
+            mousePos = input.Position
+            framePos = frame.Position
+            entrada.Cambiada:Conectar(función()
+                Si input.UserInputState == Enum.UserInputState.End entonces
+                    arrastrando = falso
+                fin
+            fin)
+        fin
+    fin)
+    manejador.InputChanged:Connect(function(input)
+        si input.UserInputType == Enum.UserInputType.MouseMovement o
+           Si input.UserInputType es igual a Enum.UserInputType.Touch, entonces
+            dragInput = entrada
+        fin
+    fin)
+    UserInputService.InputChanged:Connect(function(input)
+        si input == dragInput y arrastrando entonces
+            delta local = input.Position - mousePos
+            frame.Position = UDim2.new(
+                framePos.X.Scale, framePos.X.Offset + delta.X,
+                framePos.Y.Scale, framePos.Y.Offset + delta.Y
+            )
+        fin
+    fin)
+fin
+
+local DragHandle = Instance.new("TextButton")
+DragHandle.Tamaño = UDim2.new(1, 0, 0, 30)
+DragHandle.Position = UDim2.new(0, 0, 0, 3)
+DragHandle.BackgroundTransparency = 1
+DragHandle.Text = ""
+DragHandle.ZIndex = 0
+DragHandle.Parent = Principal
+
+makeDraggable(Principal, DragHandle)
+hacerDraggable(ToggleFrame, ToggleFrame)
+
+local uiVisible = true
+ToggleUIBtn.MouseButton1Click:Connect(function()
+    uiVisible = no uiVisible
+    Main.Visible = uiVisible
+fin)
+
+switchTab("principal")
+print("¡RickyVL Lua cargado!")
